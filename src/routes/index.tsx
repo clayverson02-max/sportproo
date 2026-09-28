@@ -30,14 +30,13 @@ function HomePage() {
             <span /> TU ESFUERZO MERECE UN MÉTODO
           </p>
           <h1 id="home-title">
-            Deja de improvisar.
+            Más de 3.000 entrenamientos.
             <br />
-            <em>Empieza a marcar la diferencia.</em>
+            <em>Deja de improvisar y evoluciona.</em>
           </h1>
           <p className="sp-intro">
-            No necesitas otro ejercicio suelto. Necesitas un plan.
-            <br className="sp-desktop-break" /> Elige tu deporte y descubre una nueva forma de
-            entrenar.
+            +500 de fútbol americano · +2.000 de fútbol de campo · +3.000 si eliges los dos.
+            <br className="sp-desktop-break" /> Elige tu método y entrena como un profesional.
           </p>
         </section>
         <section className="sp-container sp-choice-section" aria-labelledby="choice-title">

@@ -28,7 +28,7 @@ type FunnelContent = {
 
 export const funnel: Record<Sport, FunnelContent> = {
   americano: {
-    title: ["Rompe la línea.", "Cambia el partido."],
+    title: ["+500 entrenamientos.", "Rompe la línea."],
     intro:
       "Construye la fuerza, la velocidad y la explosividad que tu posición exige. Deja de entrenar al azar: empieza a entrenar con un sistema.",
     card: "Fuerza que se siente. Velocidad que marca la diferencia.",
@@ -90,7 +90,7 @@ export const funnel: Record<Sport, FunnelContent> = {
     ],
   },
   campo: {
-    title: ["Deja de improvisar.", "Domina tu juego."],
+    title: ["+2.000 entrenamientos.", "Domina tu juego."],
     intro:
       "Más de 2.000 ejercicios y 250 sesiones completas en video. Dale estructura a tu entrenamiento y llega a la cancha sabiendo qué trabajaste y por qué.",
     card: "Técnica, control y una progresión que tiene sentido.",
@@ -152,7 +152,7 @@ export const funnel: Record<Sport, FunnelContent> = {
     ],
   },
   ambos: {
-    title: ["Dos deportes.", "Un atleta más completo."],
+    title: ["+3.000 entregables.", "Entrena como un profesional."],
     intro:
       "La fuerza del fútbol americano. La técnica del fútbol de campo. Los dos métodos completos en una sola plataforma para llevar tu preparación más lejos.",
     card: "Suma fuerza y técnica. Accede a los dos métodos completos.",

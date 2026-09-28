@@ -19,6 +19,7 @@ import {
 import { ComboBadges, FunnelFooter, FunnelHeader, TrustLine } from "./FunnelChrome";
 import { funnel, getOffer, offerPaths } from "@/lib/funnel";
 import { checkoutUrls, money, type Sport } from "@/lib/offers";
+import type { ReactNode } from "react";
 
 const icons = {
   strength: Dumbbell,
@@ -29,6 +30,38 @@ const icons = {
   video: Video,
   chart: Trophy,
   phone: CirclePlay,
+};
+
+const coachImages = {
+  campo:
+    "https://raw.githubusercontent.com/clayverson02-max/sportproo/main/Captura%20de%20Tela%202026-09-27%20a%CC%80s%2022.06.59.png",
+  americano:
+    "https://raw.githubusercontent.com/clayverson02-max/sportproo/main/Captura%20de%20Tela%202026-09-27%20a%CC%80s%2022.08.56.png",
+};
+
+const coachCopy = {
+  campo: {
+    eyebrow: "QUIÉN SOY · +15 AÑOS EN EL CAMPO",
+    title: "Coach Martínez: metodología que forma jugadores de verdad",
+    text: "Llevo más de 15 años como entrenador profesional trabajando con academias, canteras y jugadores amateur en toda Latinoamérica y España. He formado a más de 2.000 futbolistas, desde niños de 6 años hasta adultos en clubes semiprofesionales.",
+    second:
+      "Esta biblioteca reúne toda mi metodología en un solo lugar: los mismos ejercicios, la misma progresión y las mismas guías que uso día tras día en el campo. Sin relleno. Sin teoría vacía. Solo una ruta clara para entrenar mejor.",
+    stats: [
+      ["+2.000", "jugadores formados"],
+      ["15", "años en el campo"],
+    ],
+  },
+  americano: {
+    eyebrow: "QUIÉN SOY · +15 AÑOS DE EXPERIENCIA",
+    title: "Un coach que entiende el juego completo",
+    text: "Llevo más de 15 años trabajando el fútbol americano desde todos sus ángulos: técnica, preparación física y estrategia. Durante ese tiempo he acompañado a jugadores que necesitaban más que una rutina genérica: necesitaban convertir su trabajo en rendimiento dentro del campo.",
+    second:
+      "Esta plataforma concentra una metodología práctica para desarrollar fuerza, explosividad, velocidad, técnica de posición y lectura de juego. Cada bloque tiene una razón de ser y está organizado para que entrenes con intención.",
+    stats: [
+      ["15+", "años de experiencia"],
+      ["360°", "técnica, físico y estrategia"],
+    ],
+  },
 };
 
 function CheckoutButton({ id }: { id: Sport }) {
@@ -48,6 +81,14 @@ function CheckoutButton({ id }: { id: Sport }) {
       </button>
       <p className="sp-buy-note">La compra estará disponible próximamente.</p>
     </div>
+  );
+}
+
+function OfferLink({ children = "Ver el paquete completo" }: { children?: ReactNode }) {
+  return (
+    <a className="sp-buy-button" href="#oferta">
+      {children} <ArrowRight size={19} />
+    </a>
   );
 }
 
@@ -88,6 +129,7 @@ function SalesPage({ id }: { id: Sport }) {
   const copy = funnel[id];
   const combo = id === "ambos";
   const next = combo ? undefined : offerPaths.ambos;
+  const coach = id === "ambos" ? coachCopy.campo : coachCopy[id];
   return (
     <div className={`sp-page sp-sales ${combo ? "sp-sales-combo" : ""}`}>
       <FunnelHeader current={id} />
@@ -199,6 +241,30 @@ function SalesPage({ id }: { id: Sport }) {
             </div>
           </div>
         </section>
+        {!combo && (
+          <section className="sp-coach sp-container" aria-labelledby="coach-title">
+            <div className="sp-coach-photo">
+              <img src={coachImages[id]} alt="Coach en el campo de entrenamiento" loading="lazy" />
+              <span>METODOLOGÍA EN EL CAMPO</span>
+            </div>
+            <div className="sp-coach-copy">
+              <p className="sp-eyebrow">
+                <span /> {coach.eyebrow}
+              </p>
+              <h2 id="coach-title">{coach.title}</h2>
+              <p>{coach.text}</p>
+              <p>{coach.second}</p>
+              <div className="sp-coach-stats">
+                {coach.stats.map(([big, label]) => (
+                  <div key={label}>
+                    <strong>{big}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
         <section className="sp-value-section sp-container" aria-labelledby="value-title">
           <div className="sp-value-heading">
             <p className="sp-eyebrow">
@@ -232,10 +298,11 @@ function SalesPage({ id }: { id: Sport }) {
                 {money(offer.price)} <i>USD</i>
               </strong>
               <span>Pago único · acceso de por vida</span>
-              <CheckoutButton id={id} />
+              <OfferLink>Quiero ver mi paquete</OfferLink>
             </div>
           </div>
         </section>
+        <PriceCard id={id} />
         {next && (
           <section className="sp-upsell sp-container">
             <div>
@@ -301,7 +368,7 @@ function SalesPage({ id }: { id: Sport }) {
           <Flame size={24} />
           <p className="sp-eyebrow">TU SIGUIENTE NIVEL EMPIEZA AHORA</p>
           <h2>{offer.final}</h2>
-          <CheckoutButton id={id} />
+          <OfferLink>Quiero ver la oferta completa</OfferLink>
           <p className="sp-final-caption">
             <HeartPulse size={15} /> Entrena con dirección. Evoluciona con intención.
           </p>
