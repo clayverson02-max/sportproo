@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FutbolAmericanoRouteImport } from './routes/futbol-americano'
+import { Route as FutbolDeCampoRouteImport } from './routes/futbol-de-campo'
+import { Route as LosDosDeportesRouteImport } from './routes/los-dos-deportes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FutbolAmericanoRoute = FutbolAmericanoRouteImport.update({
+  id: '/futbol-americano',
+  path: '/futbol-americano',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FutbolDeCampoRoute = FutbolDeCampoRouteImport.update({
+  id: '/futbol-de-campo',
+  path: '/futbol-de-campo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LosDosDeportesRoute = LosDosDeportesRouteImport.update({
+  id: '/los-dos-deportes',
+  path: '/los-dos-deportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/futbol-americano': typeof FutbolAmericanoRoute
+  '/futbol-de-campo': typeof FutbolDeCampoRoute
+  '/los-dos-deportes': typeof LosDosDeportesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/futbol-americano': typeof FutbolAmericanoRoute
+  '/futbol-de-campo': typeof FutbolDeCampoRoute
+  '/los-dos-deportes': typeof LosDosDeportesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/futbol-americano': typeof FutbolAmericanoRoute
+  '/futbol-de-campo': typeof FutbolDeCampoRoute
+  '/los-dos-deportes': typeof LosDosDeportesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/futbol-americano' | '/futbol-de-campo' | '/los-dos-deportes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/futbol-americano' | '/futbol-de-campo' | '/los-dos-deportes'
+  id:
+    | '__root__'
+    | '/'
+    | '/futbol-americano'
+    | '/futbol-de-campo'
+    | '/los-dos-deportes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FutbolAmericanoRoute: typeof FutbolAmericanoRoute
+  FutbolDeCampoRoute: typeof FutbolDeCampoRoute
+  LosDosDeportesRoute: typeof LosDosDeportesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/futbol-americano': {
+      id: '/futbol-americano'
+      path: '/futbol-americano'
+      fullPath: '/futbol-americano'
+      preLoaderRoute: typeof FutbolAmericanoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/futbol-de-campo': {
+      id: '/futbol-de-campo'
+      path: '/futbol-de-campo'
+      fullPath: '/futbol-de-campo'
+      preLoaderRoute: typeof FutbolDeCampoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/los-dos-deportes': {
+      id: '/los-dos-deportes'
+      path: '/los-dos-deportes'
+      fullPath: '/los-dos-deportes'
+      preLoaderRoute: typeof LosDosDeportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FutbolAmericanoRoute: FutbolAmericanoRoute,
+  FutbolDeCampoRoute: FutbolDeCampoRoute,
+  LosDosDeportesRoute: LosDosDeportesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

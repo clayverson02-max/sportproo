@@ -1,6 +1,13 @@
-# Sales offer configuration
+# SportPro sales funnel
 
-The three full offer sections live in `src/routes/index.tsx`; scoped styles are in `src/styles.css`.
+The funnel is split into four destinations:
+
+- `/` is the selection page with the three sport choices.
+- `/futbol-americano` is the complete American football sales page.
+- `/futbol-de-campo` is the complete association football sales page.
+- `/los-dos-deportes` is the highlighted combo sales page.
+
+The combo stays visually prominent in the selection cards, header links, individual page upsell, pricing card and CTA. The pages use the six repository images in their corresponding sport sections.
 
 ## Checkout destinations
 
@@ -10,19 +17,12 @@ Configure the public HTTPS checkout URLs in the hosting environment, then rebuil
 - `VITE_CHECKOUT_CAMPO`: individual association football, USD 6.50.
 - `VITE_CHECKOUT_COMBO`: both methods, USD 10.50.
 
-The existing page had no checkout URLs. Until supplied, purchase buttons remain disabled with a short availability message. Do not use credentials or API tokens in VITE variables. Verify that each checkout charges the corresponding price.
+Until real URLs are supplied, buttons remain disabled with a short availability message. Do not put credentials, API tokens or payment secrets in `VITE_*` variables.
 
 ## Testimonials
 
-Each offer has a typed `reviews` list, empty by default because no testimonial text, names or roles were supplied. Add up to three authorized entries `{ name, role, quote, photo? }`. The section is rendered between the value stack and guarantee; without a photo, a circular neutral avatar is used. Empty sections are hidden, so no invented endorsements are published. Athlete images are presentation images, not testimonials.
-
-## Images
-
-- 2026-09-09 18.48.30, 18.48.41 and 18.48.50: association football.
-- 2026-09-27 21.12.42, 21.13.28 and 21.13.38: American football.
-
-All six originals are imported by Vite from the repository root and bundled. The combo combines the action photo from each sport.
+No authorized testimonial text, names or roles were present in the repository. The implementation therefore uses the supplied athlete photos as sport imagery and does not present them as customer testimonials. Add verified reviews to the offer data before enabling a testimonial block.
 
 ## Pricing
 
-Module reference totals: USD 104.60 (American), USD 49.80 (association), USD 154.40 (combo). These are labeled illustrative reference values, not prior sale prices. Two individual purchases total USD 13.00; the combo saves USD 2.50. The greater-than-90-percent statement refers only to the illustrative USD 154.40 reference total. The combo FAQ correctly describes both complete methods, without claiming extra content beyond them.
+The official prices are USD 6.50 for each individual method and USD 10.50 for the combo. Reference module totals are shown as illustrative value references: USD 104.60 (American), USD 49.80 (association), USD 154.40 (combo). The two individual purchases total USD 13.00; the combo saves USD 2.50.
