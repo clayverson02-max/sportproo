@@ -867,6 +867,58 @@ div[style*="Edit with Lovable"],
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.sp-coach-team {
+  padding-bottom: 90px;
+}
+.sp-coach-team-heading {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.sp-coach-team-heading .sp-eyebrow {
+  justify-content: center;
+}
+.sp-coach-team-heading h2 {
+  margin-bottom: 15px;
+  font-size: clamp(2.3rem, 5vw, 4.2rem);
+}
+.sp-coach-team-heading > p:last-child {
+  margin: 0;
+  color: var(--sp-muted);
+  font-size: 16px;
+}
+.sp-coach-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.sp-coach-team-card {
+  overflow: hidden;
+  border: 1px solid var(--sp-line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 28px #18372a0b;
+}
+.sp-coach-team-photo {
+  height: 265px;
+  background: #dce8df;
+}
+.sp-coach-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sp-coach-team-body {
+  padding: 24px;
+}
+.sp-coach-team-body h3 {
+  margin-bottom: 15px;
+  font-size: 27px;
+}
+.sp-coach-team-body > p:not(.sp-eyebrow) {
+  color: var(--sp-muted);
+  font-size: 13px;
+}
 .sp-value-section {
   padding-bottom: 90px;
 }
@@ -1329,6 +1381,15 @@ div[style*="Edit with Lovable"],
   }
   .sp-coach-copy h2 {
     font-size: 2.7rem;
+  }
+  .sp-coach-team {
+    padding-bottom: 65px;
+  }
+  .sp-coach-team-grid {
+    grid-template-columns: 1fr;
+  }
+  .sp-coach-team-photo {
+    height: 240px;
   }
   .sp-value-section {
     padding-bottom: 65px;

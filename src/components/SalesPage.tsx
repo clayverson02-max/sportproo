@@ -265,6 +265,53 @@ function SalesPage({ id }: { id: Sport }) {
             </div>
           </section>
         )}
+        {combo && (
+          <section className="sp-coach-team sp-container" aria-labelledby="coaches-title">
+            <div className="sp-coach-team-heading">
+              <p className="sp-eyebrow">
+                <span /> DOS ESPECIALISTAS · UNA PLATAFORMA COMPLETA
+              </p>
+              <h2 id="coaches-title">Entrena con la visión de quienes viven el deporte.</h2>
+              <p>
+                El plan completo reúne dos metodologías que se complementan: una construye fuerza y
+                explosividad; la otra desarrolla técnica, control y lectura del juego. Es la
+                preparación que te permite crecer como atleta desde más de un ángulo.
+              </p>
+            </div>
+            <div className="sp-coach-team-grid">
+              {(["campo", "americano"] as const).map((coachId) => {
+                const profile = coachCopy[coachId];
+                return (
+                  <article className="sp-coach-team-card" key={coachId}>
+                    <div className="sp-coach-team-photo">
+                      <img
+                        src={coachImages[coachId]}
+                        alt="Coach en el campo de entrenamiento"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="sp-coach-team-body">
+                      <p className="sp-eyebrow">
+                        <span /> {profile.eyebrow}
+                      </p>
+                      <h3>{profile.title}</h3>
+                      <p>{profile.text}</p>
+                      <p>{profile.second}</p>
+                      <div className="sp-coach-stats">
+                        {profile.stats.map(([big, label]) => (
+                          <div key={label}>
+                            <strong>{big}</strong>
+                            <span>{label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        )}
         <section className="sp-value-section sp-container" aria-labelledby="value-title">
           <div className="sp-value-heading">
             <p className="sp-eyebrow">
