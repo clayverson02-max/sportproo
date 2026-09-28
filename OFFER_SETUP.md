@@ -17,7 +17,7 @@ Configure the public HTTPS checkout URLs in the hosting environment, then rebuil
 - `VITE_CHECKOUT_CAMPO`: individual association football, USD 6.50.
 - `VITE_CHECKOUT_COMBO`: both methods, USD 10.50.
 
-Until real URLs are supplied, buttons remain disabled with a short availability message. Do not put credentials, API tokens or payment secrets in `VITE_*` variables.
+The current fallback URLs are configured in `src/lib/offers.ts`, and can be overridden with `VITE_*` variables if needed. Do not put credentials, API tokens or payment secrets in `VITE_*` variables.
 
 ## Testimonials
 

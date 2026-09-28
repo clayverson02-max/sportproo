@@ -29,9 +29,13 @@ export type Offer = {
 // Add only verified, authorized testimonials. Empty lists keep the section hidden.
 // Public checkout URLs only; never put API keys or payment secrets here.
 export const checkoutUrls: Record<Sport, string> = {
-  americano: import.meta.env["VITE_CHECKOUT_AMERICANO"] || "",
-  campo: import.meta.env["VITE_CHECKOUT_CAMPO"] || "",
-  ambos: import.meta.env["VITE_CHECKOUT_COMBO"] || "",
+  americano:
+    import.meta.env["VITE_CHECKOUT_AMERICANO"] ||
+    "https://pay.hotmart.com/A107793404T?checkoutMode=10",
+  campo:
+    import.meta.env["VITE_CHECKOUT_CAMPO"] || "https://pay.hotmart.com/P107284207G?checkoutMode=10",
+  ambos:
+    import.meta.env["VITE_CHECKOUT_COMBO"] || "https://pay.hotmart.com/T107793673B?checkoutMode=10",
 };
 const soccerImages = [
   { src: photo0, alt: "Jugador de fútbol de campo practicando un remate frente a una barrera" },
