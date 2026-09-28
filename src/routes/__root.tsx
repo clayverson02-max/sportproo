@@ -105,6 +105,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          async
+          defer
+          data-utmify-prevent-subids=""
+        />
       </head>
       <body>
         {children}
